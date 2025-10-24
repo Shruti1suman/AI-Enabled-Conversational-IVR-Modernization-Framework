@@ -1,0 +1,290 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .phone-container {
+            background: #1a1a2e;
+            border-radius: 30px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .phone-screen {
+            background: #0f3460;
+            border-radius: 20px;
+            padding: 30px 20px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .call-status {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .status-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .status-text {
+            color: #4ecca3;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .call-display {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .caller-info {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .caller-number {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .call-duration {
+            color: #4ecca3;
+            font-size: 0.9rem;
+        }
+
+        .ivr-output {
+            color: white;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            overflow-y: auto;
+            max-height: 200px;
+        }
+
+        .ivr-output p {
+            margin-bottom: 10px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .speaking-indicator {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .speaking-indicator.active {
+            display: flex;
+        }
+
+        .wave {
+            width: 4px;
+            height: 20px;
+            background: #4ecca3;
+            border-radius: 2px;
+            animation: wave 0.8s ease-in-out infinite;
+        }
+
+        .wave:nth-child(2) { animation-delay: 0.1s; }
+        .wave:nth-child(3) { animation-delay: 0.2s; }
+        .wave:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes wave {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        /* Keypad */
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .key {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+        }
+
+        .key:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .key:active {
+            transform: scale(0.95);
+            background: #4ecca3;
+        }
+
+        .key-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .key-letters {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: -5px;
+        }
+
+        .key.special {
+            grid-column: span 1;
+        }
+
+        .key.zero {
+            grid-column: 2;
+        }
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-call {
+            background: #4ecca3;
+            color: #1a1a2e;
+        }
+
+        .btn-call:hover {
+            background: #3dbb8f;
+            transform: translateY(-2px);
+        }
+
+        .btn-hangup {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-hangup:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-call:disabled,
+        .btn-hangup:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Call history */
+        .call-history {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .history-title {
+            color: #4ecca3;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .history-item {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Scrollbar */
+        .ivr-output::-webkit-scrollbar,
+        .call-history::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .ivr-output::-webkit-scrollbar-track,
+        .call-history::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .ivr-output::-webkit-scrollbar-thumb,
+        .call-history::-webkit-scrollbar-thumb {
+            background: #4ecca3;
+            border-radius: 3px;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .key {
+                width: 60px;
+                height: 60px;
+            }
+
+            .key-number {
+                font-size: 1.5rem;
+            }
+        }
