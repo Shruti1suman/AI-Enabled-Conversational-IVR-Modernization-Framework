@@ -162,7 +162,7 @@ pip install -r requirements.txt
 Run backend server:
 
 ```
-uvicorn backend.backend:app --reload
+uvicorn backend.server:app --reload
 ```
 
 Open frontend using Live Server and start call.
