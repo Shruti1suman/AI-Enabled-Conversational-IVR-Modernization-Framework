@@ -47,8 +47,6 @@ A fully interactive, browser-based IVR simulation that supports DTMF keypad navi
 
 /backend
   server.py
-  state_machine.py
-  menu.py
 
 README.md
 ```
@@ -164,7 +162,7 @@ pip install -r requirements.txt
 Run backend server:
 
 ```
-uvicorn backend.backend:app --reload
+uvicorn backend.server:app --reload
 ```
 
 Open frontend using Live Server and start call.
