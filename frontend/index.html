@@ -3,37 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IVR Web Simulator</title>
+  <title>IVR Mobile Simulator</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>📞 IVR Web Simulator</h1>
 
-    <div class="call-section">
-      <input id="caller" type="text" placeholder="Enter your phone number">
-      <button onclick="startCall()">Start Call</button>
+  <div class="phone-container">
+    <!-- waveform-->
+<div id="waveform" class="waveform">
+        <div class="wave"></div>
+        <div class="wave"></div>
+       <div class="wave"></div>
+       <div class="wave"></div>
+   </div>
+    <!-- Display -->
+    <div id="ivr-display" class="screen">
+      <div class="welcome message">Press "start call"</div>
     </div>
 
-    <div id="ivr-display" class="ivr-display"></div>
+    <!-- Call Status -->
+    <div id="call-status" class="call-status">
+      
+    </div>
 
+    <!-- Keypad -->
     <div id="keypad" class="keypad">
-        <button class="digit" onclick="sendDTMF('1')">1</button>
-        <button class="digit" onclick="sendDTMF('2')">2</button>
-        <button class="digit" onclick="sendDTMF('3')">3</button><br>
-        <button class="digit" onclick="sendDTMF('4')">4</button>
-        <button class="digit" onclick="sendDTMF('5')">5</button>
-        <button class="digit" onclick="sendDTMF('6')">6</button><br>
-        <button class="digit" onclick="sendDTMF('7')">7</button>
-        <button class="digit" onclick="sendDTMF('8')">8</button>
-        <button class="digit" onclick="sendDTMF('9')">9</button><br>
-        <button class="digit" onclick="sendDTMF('*')">*</button>
-        <button class="digit" onclick="sendDTMF('0')">0</button>
-        <button class="digit" onclick="sendDTMF('#')">#</button>
+      <button class="digit" onclick="sendDTMF('1')">1<br><small>.,?</small></button>
+      <button class="digit" onclick="sendDTMF('2')">2<br><small>ABC</small></button>
+      <button class="digit" onclick="sendDTMF('3')">3<br><small>DEF</small></button>
 
+      <button class="digit" onclick="sendDTMF('4')">4<br><small>GHI</small></button>
+      <button class="digit" onclick="sendDTMF('5')">5<br><small>JKL</small></button>
+      <button class="digit" onclick="sendDTMF('6')">6<br><small>MNO</small></button>
+
+      <button class="digit" onclick="sendDTMF('7')">7<br><small>PQRS</small></button>
+      <button class="digit" onclick="sendDTMF('8')">8<br><small>TUV</small></button>
+      <button class="digit" onclick="sendDTMF('9')">9<br><small>WXYZ</small></button>
+
+      <button class="digit" onclick="sendDTMF('*')">*</button>
+      <button class="digit" onclick="sendDTMF('0')">0<br><small>+</small></button>
+      <button class="digit" onclick="sendDTMF('#')">#</button>
     </div>
+
+    <!-- Call Controls -->
+    <div class="call-controls">
+      <button id="start-btn" class="start" onclick="startCall()">Start Call</button>
+      <button id="end-btn" class="end" onclick="endCall()" disabled>End Call</button>
+    </div>
+
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
