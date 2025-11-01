@@ -57,6 +57,7 @@ MENU = {
             "4": {"action": "goto", "target": "baggage", "msg": "Baggage menu selected."},
             "5": {"action": "goto", "target": "loyalty", "msg": "Loyalty menu selected."},
             "6": {"action": "goto", "target": "feedback", "msg": "Feedback module."},
+            "7": {"action": "goto", "target": "offers", "msg": "Special offers menu selected."},
             "8": {"action": "goto", "target": "callback", "msg": "Callback scheduling."},
             "9": {"action": "agent", "msg": "Connecting to a live agent..."},
             "0": {"action": "end", "msg": "Emergency hotline number sent via SMS."}
@@ -65,23 +66,23 @@ MENU = {
 
     # ------------------ BOOKING ------------------
     "booking": {
-        "prompt": "Press 1 for Domestic.\nPress 2 for International.\nPress 3 to select meal preference.\nPress 0 to return.",
+        "prompt": "Press 1 for Domestic.\nPress 2 for International.\nPress 3 to select meal preference.\nPress * to return.",
         "options": {
             "1": {"action": "end", "msg": "Domestic booking request received."},
             "2": {"action": "end", "msg": "International booking registered."},
             "3": {"action": "goto", "target": "meal", "msg": "Meal preference menu."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning to main menu."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning to main menu."}
         }
     },
 
     # ------------------ MEAL ------------------
     "meal": {
-        "prompt": "Press:\n1 for Veg.\n2 for Non-Veg.\n3 Jain Meal.\n0 to return.",
+        "prompt": "Press:\n1 for Veg.\n2 for Non-Veg.\n3 Jain Meal.\n* to return.",
         "options": {
             "1": {"action": "end", "msg": "Veg meal preference updated."},
             "2": {"action": "end", "msg": "Non-Veg meal preference updated."},
             "3": {"action": "end", "msg": "Jain meal preference updated."},
-            "0": {"action": "goto", "target": "booking", "msg": "Returning to booking menu."}
+            "*": {"action": "goto", "target": "booking", "msg": "Returning to booking menu."}
         }
     },
 
@@ -95,81 +96,92 @@ MENU = {
 
     # ------------------ CANCELLATION ------------------
     "cancel": {
-        "prompt": "Enter ticket number followed by # for cancellation.\nPress 0 to return.",
+        "prompt": "Enter ticket number followed by # for cancellation.\nPress * to return.",
         "options": {
             "#": {"action": "cancel_lookup", "msg": "Ticket cancellation request registered."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning to main menu."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning to main menu."}
         }
     },
 
     # ------------------ BAGGAGE SERVICES ------------------
     "baggage": {
-        "prompt": "Press 1 for Lost Baggage.\nPress 2 to Track Existing Complaint.\nPress 3 for Damaged Baggage.\nPress 0 to return.",
+        "prompt": "Press 1 for Lost Baggage.\nPress 2 to Track Existing Complaint.\nPress 3 for Damaged Baggage.\nPress * to return.",
         "options": {
             "1": {"action": "goto", "target": "lost", "msg": "Lost baggage menu."},
             "2": {"action": "goto", "target": "track", "msg": "Track complaint."},
             "3": {"action": "end", "msg": "Complaint forwarded to baggage team."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning."}
         }
     },
 
     # ------------------ LOST BAGGAGE ------------------
     "lost": {
-        "prompt": "Enter 5-digit bag tag number followed by #.\nPress 0 to return.",
+        "prompt": "Enter 5-digit bag tag number followed by #.\nPress * to return.",
         "options": {
             "#": {"action": "lost_lookup", "msg": "Lost baggage complaint logged."},
-            "0": {"action": "goto", "target": "baggage", "msg": "Returning to baggage menu."}
+            "*": {"action": "goto", "target": "baggage", "msg": "Returning to baggage menu."}
         }
     },
 
     # ------------------ LOST BAGGAGE TRACKING ------------------
 "track": {
-    "prompt": "Enter Complaint ID (4 digits) followed by #.\nPress 0 to return.",
+    "prompt": "Enter Complaint ID (4 digits) followed by #.\nPress * to return.",
     "options": {
         "#": {"action": "track_lookup", "msg": "Checking status..."},
-        "0": {"action": "goto", "target": "lost", "msg": "Returning."}
+        "*": {"action": "goto", "target": "baggage", "msg": "Returning to baggage menu."}
     }
 },
 
     # ------------------ LOYALTY ------------------
     "loyalty": {
-        "prompt": "Press 1 to check reward points.\nPress 2 to redeem points.\nPress 0 to return.",
+        "prompt": "Press 1 to check reward points.\nPress 2 to redeem points.\nPress * to return.",
         "options": {
             "1": {"action": "end", "msg": "You have 14,200 reward points."},
             "2": {"action": "end", "msg": "Points redeemed successfully."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning."}
         }
     },
 
     # ------------------ CALLBACK ------------------
     "callback": {
-        "prompt": "Press 1 to schedule callback in 15 minutes.\nPress 2 for 1 hour.\nPress 0 to return.",
+        "prompt": "Press 1 to schedule callback in 15 minutes.\nPress 2 for 1 hour.\nPress * to return.",
         "options": {
             "1": {"action": "end", "msg": "Callback scheduled in 15 minutes."},
             "2": {"action": "end", "msg": "Callback scheduled in 1 hour."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning."}
         }
     },
+    # -----------------------Offers -------------------------
+    "offers": {
+    "prompt": "Press 1 for Discount Coupons.\nPress 2 for Seasonal Sales.\nPress 3 for Partner Offers.\nPress * to return.",
+    "options": {
+        "1": {"action": "end", "msg": "Discount coupons have been sent via SMS."},
+        "2": {"action": "end", "msg": "Seasonal sale details forwarded."},
+        "3": {"action": "end", "msg": "Partner offer details shared."},
+        "&": {"action": "goto", "target": "main", "msg": "Returning to main menu."}
+    }
+},
+
 
     # ------------------ FEEDBACK ------------------
     "feedback": {
-        "prompt": "Rate your experience:\n1- Poor\n2- Average\n3- Good\n4- Excellent\n0 to return",
+        "prompt": "Rate your experience:\n1- Poor\n2- Average\n3- Good\n4- Excellent\n* to return",
         "options": {
             "1": {"action": "end", "msg": "We regret for your inconvenience. We will improve."},
             "2": {"action": "end", "msg": "Thanks for Average rating."},
             "3": {"action": "end", "msg": "Thanks for Good rating."},
             "4": {"action": "end", "msg": "Thanks for Excellent rating!"},
-            "0": {"action": "goto", "target": "main", "msg": "Returning."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning."}
         }
     },
 
     # ------------------ HIDDEN ADMIN MENU ------------------
     "admin": {
-        "prompt": "Admin Diagnostics.\nPress 1 to view Active Calls.\nPress 2 to Fetch Logs.\nPress 0 return",
+        "prompt": "Admin Diagnostics.\nPress 1 to view Active Calls.\nPress 2 to Fetch Logs.\nPress * return",
         "options": {
             "1": {"action": "end", "msg": "Active calls count sent to admin email."},
             "2": {"action": "end", "msg": "System logs forwarded."},
-            "0": {"action": "goto", "target": "main", "msg": "Returning."}
+            "*": {"action": "goto", "target": "main", "msg": "Returning."}
         }
     }
 }
@@ -216,7 +228,7 @@ def dtmf(data: DTMFInput):
     # PNR mode input
      
      
-    if menu in ["status", "cancel"] and digit != "#":
+    if menu in ["status", "cancel"] and digit != "#" and digit != "*":
         call["entered"] += digit
         if len(call["entered"]) <= 6:
             return {"prompt": f"PNR so far: {call['entered']}"}
@@ -226,7 +238,7 @@ def dtmf(data: DTMFInput):
             return {"prompt": f"Invalid PNR length"}
         
     # For any baggage number entry
-    if menu in ["lost", "track"] and digit != "#":
+    if menu in ["lost", "track"] and digit != "#" and digit != "*":
         call["entered"] += digit
         return {"prompt": f"Entered: {call['entered']}"}    
         
