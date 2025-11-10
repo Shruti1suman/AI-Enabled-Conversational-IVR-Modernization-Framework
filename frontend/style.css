@@ -103,6 +103,11 @@ body {
   transform: scale(.94);
 }
 
+.digit:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
 /* Call Controls */
 .call-controls {
   text-align: center;
@@ -118,6 +123,11 @@ body {
   cursor: pointer;
   margin-right: 12px;
   transition: .2s;
+}
+
+#start-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
 }
 
 #end-btn {
@@ -147,124 +157,4 @@ body {
   }
 }
 
-/*
-body {
-  font-family: Arial, sans-serif;
-  background: #222;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #fff;
-}
 
-.phone-container {
-  background: #111;
-  width: 330px;
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 0 20px #000;
-}
-
-.screen {
-  background: #0c0c0c;
-  border: 2px solid #333;
-  padding: 15px;
-  height: fit-content;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  overflow-y: hidden;
-  font-size: 14px;
-  position: relative;
-}
-
-.waveform {
-  display: flex;
-  visibility: hidden;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  height: 50px;
-  margin-top: 10px;
-}
-.waveform.active {
-   visibility: visible;
- }
-
-.wave {
-  width: 4px;
-  height: 20px;
-  background: #4ecca3;
-  border-radius: 2px;
-  animation: wave 0.8s ease-in-out infinite;
-}
-
-.wave:nth-child(2) { animation-delay: 0.1s; }
-.wave:nth-child(3) { animation-delay: 0.2s; }
-.wave:nth-child(4) { animation-delay: 0.3s; }
-
-@keyframes wave {
-0%, 100% { height: 10px; }
-50% { height: 30px; }
-}
-
-.call-status {
-  font-size: 13px;
-  margin-bottom: 12px;
-  color: #0f0;
-}
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 15px;
-}
-
-.digit {
-  background: #333;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.digit:disabled {
-  background: #555;
-  cursor: not-allowed;
-}
-
-.start {
-  width: 48%;
-  padding: 10px;
-  background: #0a0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
-}
-
-.start:disabled {
-  background: rgb(2, 105, 2);;
-}
-
-.end {
-  width: 48%;
-  padding: 10px;
-  background: #a00;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  color: white;
-  font-size: 16px;
-}
-
-.end:disabled {
-  background: #500;
-}
-
-*/
