@@ -1,6 +1,8 @@
 // Responsible for sending DTMF events to backend and handling responses.
                                                           // Mainly milestone 2 supporting backend endpoints
 
+const BASE_URL = "https://ai-enabled-conversational-ivr-b1zr.onrender.com";                                                          
+
 export async function sendDTMF(digit) {
   const callId = window.currentCallId || null;
   if (!callId) {
@@ -12,7 +14,7 @@ export async function sendDTMF(digit) {
   if (typeof window.stopVoice === "function") window.stopVoice();
 
   try {
-    const res = await fetch("http://127.0.0.1:8000/ivr/dtmf", {
+    const res = await fetch(`${BASE_URL}/ivr/dtmf`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ call_id: callId, digit })

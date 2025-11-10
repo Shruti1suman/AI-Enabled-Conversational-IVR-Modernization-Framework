@@ -3,6 +3,8 @@
                                                      // Partly milestone 2 and milstone 3 with supporting backend endpoints
                                                             // and text to speech conversion (integrated voice output)
 
+const BASE_URL = "https://ai-enabled-conversational-ivr-b1zr.onrender.com";                                                            
+
 import { sendDTMF } from "./dtmf.js";
 import { startVoiceLoop, stopVoiceLoop } from "./voiceInput.js";
 
@@ -106,10 +108,10 @@ export async function speakAndTypeInSync(text) {
 export function enableKeypad(enable) {
   document.querySelectorAll(".digit").forEach(btn => btn.disabled = !enable);
 }
-
+enableKeypad(false);
 export async function startCall() {
   try {
-    const res = await fetch("http://127.0.0.1:8000/ivr/start", {
+    const res = await fetch(`${BASE_URL}/ivr/start`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ caller_number: "SIMULATED" })
