@@ -333,8 +333,20 @@ def end_internal(call_id, msg):
     }
 
 # ------------------ MANUAL END ------------------
+class EndCall(BaseModel):
+    call_id: str
+
 @app.post("/ivr/end")
-def end(call_id: str):
+def end(payload: EndCall):
+    call_id = payload.call_id
     if call_id not in active_calls:
         return {"message": "Already ended."}
     return end_internal(call_id, "Call terminated by user.")
+
+
+
+#@app.post("/ivr/end")
+#def end(call_id: str):
+#    if call_id not in active_calls:
+#        return {"message": "Already ended."}
+#    return end_internal(call_id, "Call terminated by user.")

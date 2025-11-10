@@ -189,3 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+window.addEventListener("beforeunload", () => {
+  stopVoice();
+  stopVoiceLoop();
+});
+
+
