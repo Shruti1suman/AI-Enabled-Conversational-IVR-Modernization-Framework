@@ -51,7 +51,7 @@ body {
 
 /* Display Screen */
 .screen {
-  height: 110px;
+  height: fit-content;
   background: linear-gradient(#0a192f,#06121f);
   color: #e0e9ff;
   border-radius: 15px;
